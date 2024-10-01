@@ -1,0 +1,4 @@
+.env
+discloud.config
+/.vscode
+**/__pycache__
