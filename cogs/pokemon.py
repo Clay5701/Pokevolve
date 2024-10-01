@@ -67,6 +67,11 @@ class PokemonCog(commands.Cog):
     @app_commands.command(name='pokemon_list', description='List out your pokemon.')
     async def pokelist(self, interaction: discord.Interaction, user: str=None, region: str=None, level: int=None, pokemon: str=None):
         guild_id = interaction.guild.id
+        if region:
+            region = region.lower()
+        
+        if pokemon:
+            pokemon = pokemon.lower()
 
         if user is None:
             user_id = interaction.user.id
@@ -82,7 +87,7 @@ class PokemonCog(commands.Cog):
             
             user_id = member.id
 
-        pokemon_list = poke_fetch(guild_id, user_id, region.lower(), level, pokemon.lower())
+        pokemon_list = poke_fetch(guild_id, user_id, region, level, pokemon)
         
         if pokemon_list == []:
             await interaction.response.send_message('No pokemon found!', ephemeral=True)
@@ -92,7 +97,7 @@ class PokemonCog(commands.Cog):
 
         message = ''
         for item in pokemon_list:
-            message += f'**{item[3].capitalize()}** - [Region: {item[2]}   ID: {item[7]}]\n'
+            message += f'**{item[3].capitalize()}** - [Region: {item[2].capitalize()}   ID: {item[7]}]\n'
 
         await interaction.followup.send(f'{message}\n***For more information on a given pokemon use /pokemon_info***',  ephemeral=True)
 

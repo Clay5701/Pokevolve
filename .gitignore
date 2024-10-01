@@ -2,3 +2,4 @@
 discloud.config
 /.vscode
 **/__pycache__
+pokemon.db
