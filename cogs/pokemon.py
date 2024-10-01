@@ -82,7 +82,7 @@ class PokemonCog(commands.Cog):
             
             user_id = member.id
 
-        pokemon_list = poke_fetch(guild_id, user_id, region, level, pokemon)
+        pokemon_list = poke_fetch(guild_id, user_id, region.lower(), level, pokemon.lower())
         
         if pokemon_list == []:
             await interaction.response.send_message('No pokemon found!', ephemeral=True)
