@@ -27,9 +27,7 @@ class PokemonCog(commands.Cog):
             trainer_data = fetch_trainer(guild_id, user_id)
 
         region = trainer_data[6]
-        print(region)
         trainer_level = trainer_data[3]
-        print(trainer_level)
         pokemon_data.pokemon_sel(region, trainer_level)
         pokemon = pokemon_data.pokemon
         pokemon_level = pokemon_data.level
