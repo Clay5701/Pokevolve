@@ -38,8 +38,8 @@ class Level(commands.Cog):
 
         new_poke_xp = poke_xp + random.randint(0, 4)
 
-        if poke_xp >= level_up_xp:
-            new_poke_xp -= poke_xp
+        if new_poke_xp >= level_up_xp:
+            new_poke_xp -= level_up_xp
             poke_level += 1
             new_level_up_xp = (2 * poke_level ** 2 + 7 * poke_level + 15) - (2 * (poke_level-1) ** 2 + 7 * (poke_level-1) + 15)
 
